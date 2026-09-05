@@ -1,0 +1,5 @@
+
+import { PageContainer, Section } from '@/components/ui/page-container'
+export function AboutPage() {
+  return <Section><PageContainer><h1 className="text-4xl font-bold">About EDUPATH</h1><p className="mt-4 text-muted-foreground max-w-3xl">EDUPATH is an AI-powered education & learning ecosystem by SEMIZZY WEBMASTER. Tagline: We Design. We Develop. We Deliver. We build production-grade, scalable learning experiences for Nigerian secondary, tertiary, vocational and professional learners.</p><div className="mt-8 grid gap-6 md:grid-cols-3"><div className="rounded-xl border p-6"><h3 className="font-semibold">Mission</h3><p className="text-sm text-muted-foreground mt-2">Democratize quality education with AI.</p></div><div className="rounded-xl border p-6"><h3 className="font-semibold">Vision</h3><p className="text-sm text-muted-foreground mt-2">Every learner achieves academic excellence.</p></div><div className="rounded-xl border p-6"><h3 className="font-semibold">Values</h3><p className="text-sm text-muted-foreground mt-2">Integrity, excellence, accessibility, innovation.</p></div></div></PageContainer></Section>
+}

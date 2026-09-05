@@ -1,0 +1,3 @@
+
+import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card'
+export function TeacherDashboardPage() { return <div className="space-y-6"><h1 className="text-2xl font-bold">Teacher Dashboard</h1><div className="grid gap-4 md:grid-cols-3"><Card><CardHeader><CardTitle>Classes</CardTitle></CardHeader><CardContent>3 classes • 87 students</CardContent></Card><Card><CardHeader><CardTitle>Assignments</CardTitle></CardHeader><CardContent>12 pending marking</CardContent></Card><Card><CardHeader><CardTitle>AI Assistant</CardTitle></CardHeader><CardContent>Draft lessons, quizzes</CardContent></Card></div></div> }

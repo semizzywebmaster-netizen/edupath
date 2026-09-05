@@ -1,0 +1,7 @@
+
+import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card'
+import { Input } from '@/components/ui/input'
+import { Select } from '@/components/ui/select'
+import { Button } from '@/components/ui/button'
+export function ProfilePage() { return <div className="space-y-6 max-w-3xl"><h1 className="text-2xl font-bold">Profile & Education</h1><Card><CardHeader><CardTitle>Academic Profile</CardTitle></CardHeader><CardContent className="grid gap-4 md:grid-cols-2"><Input label="Country" defaultValue="Nigeria" /><Input label="State" defaultValue="Ogun" /><Select label="Institution Type"><option>University</option><option>Polytechnic</option><option>Secondary</option></Select><Select label="Education Level"><option>Senior Secondary</option><option>University</option></Select><Input label="Programme" defaultValue="Computer Science" /><Input label="Level" defaultValue="300" /><Input label="Session" defaultValue="2024/2025" /></CardContent></Card><Card><CardHeader><CardTitle>Privacy Note</CardTitle></CardHeader><CardContent className="text-xs text-muted-foreground">Changing profile info must not delete historical learning progress — backend handles it.</CardContent></Card><Button>Save Changes (Demo)</Button></div> }
+export function SettingsPage() { return <div className="space-y-6 max-w-3xl"><h1 className="text-2xl font-bold">Settings</h1><Card><CardHeader><CardTitle>Preferences</CardTitle></CardHeader><CardContent className="text-sm">Notifications, privacy, appearance, data controls</CardContent></Card></div> }
