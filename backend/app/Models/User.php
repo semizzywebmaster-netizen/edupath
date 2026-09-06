@@ -13,18 +13,10 @@ class User extends Authenticatable
     use HasApiTokens, Notifiable;
 
     protected $fillable = [
-        'public_id',
-        'name',
-        'email',
-        'password',
-        'phone',
-        'is_active',
+        'public_id', 'name', 'email', 'password', 'phone', 'is_active',
     ];
 
-    protected $hidden = [
-        'password',
-        'remember_token',
-    ];
+    protected $hidden = ['password', 'remember_token'];
 
     protected function casts(): array
     {
@@ -48,5 +40,23 @@ class User extends Authenticatable
     public function hasRole(string $role): bool
     {
         return $this->roles()->where('name', $role)->exists();
+    }
+
+    public function hasAnyRole(array $roles): bool
+    {
+        return $this->roles()->whereIn('name', $roles)->exists();
+    }
+
+    public function hasPermission(string $permission): bool
+    {
+        if ($this->hasRole('super_admin')) {
+            return true;
+        }
+
+        return $this->roles()
+            ->whereHas('permissions', static function ($query) use ($permission): void {
+                $query->where('name', $permission);
+            })
+            ->exists();
     }
 }
