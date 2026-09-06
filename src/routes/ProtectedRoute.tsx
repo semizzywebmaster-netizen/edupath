@@ -1,14 +1,22 @@
-
-import { Navigate } from 'react-router-dom'
+import type { ReactNode } from 'react'
+import { Navigate, useLocation } from 'react-router-dom'
 import { useAuth } from '@/hooks/useAuth'
-export function ProtectedRoute({ children }: { children: React.ReactNode }) {
-  const { isAuthenticated } = useAuth()
-  // Allow demo mode to pass for now — real backend will enforce
-  const demoBypass = localStorage.getItem('edupath_demo_bypass') !== 'false'
-  if (!isAuthenticated && !demoBypass) {
-    // For autopilot/demo we allow access but show banner
-    // In production, uncomment below:
-    // return <Navigate to="/auth/login" replace />
+
+export function ProtectedRoute({ children }: { children: ReactNode }) {
+  const { isAuthenticated, isLoading } = useAuth()
+  const location = useLocation()
+
+  if (isLoading) {
+    return (
+      <div className="min-h-screen grid place-items-center" role="status" aria-live="polite">
+        <span>Checking your session…</span>
+      </div>
+    )
   }
+
+  if (!isAuthenticated) {
+    return <Navigate to="/auth/login" replace state={{ from: location.pathname }} />
+  }
+
   return <>{children}</>
 }
