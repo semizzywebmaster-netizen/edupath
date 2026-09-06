@@ -16,8 +16,8 @@ Route::prefix('v1')->group(function (): void {
     });
 
     Route::prefix('auth')->group(function (): void {
-        Route::post('/register', [AuthController::class, 'register'])->middleware('throttle:auth');
-        Route::post('/login', [AuthController::class, 'login'])->middleware('throttle:auth');
+        Route::post('/register', [AuthController::class, 'register'])->middleware('throttle:60,1');
+        Route::post('/login', [AuthController::class, 'login'])->middleware('throttle:60,1');
 
         Route::middleware('auth:sanctum')->group(function (): void {
             Route::get('/me', [AuthController::class, 'me']);
